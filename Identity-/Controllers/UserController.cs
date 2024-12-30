@@ -5,17 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Identity_.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly AppDbContext _context;
         private readonly PasswordHasherService _passwordHasher;
-        public UserController(AppDbContext context, PasswordHasherService _passwordHasher)
+
+        public UserController(AppDbContext context, PasswordHasherService passwordHasher)
         {
             _context = context;
-            this.passwordHasher = passwordHasher;
-            _passwordHasher = new PasswordHasherService();
+            _passwordHasher = passwordHasher;
         }
 
         [HttpPost("register")]
@@ -33,6 +34,8 @@ namespace Identity_.Controllers
 
             return Ok(new { message = "User registered successfully." });
         }
-
     }
+
+
+
 }
