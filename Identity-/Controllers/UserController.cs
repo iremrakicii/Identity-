@@ -11,9 +11,10 @@ namespace Identity_.Controllers
     {
         private readonly AppDbContext _context;
         private readonly PasswordHasherService _passwordHasher;
-        public UserController(AppDbContext context)
+        public UserController(AppDbContext context, PasswordHasherService _passwordHasher)
         {
             _context = context;
+            this.passwordHasher = passwordHasher;
             _passwordHasher = new PasswordHasherService();
         }
 
